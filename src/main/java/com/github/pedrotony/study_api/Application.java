@@ -12,13 +12,11 @@ public class Application implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		System.out.println("Olá");
 	}
 
 	
 	public void run(String... args) throws Exception {
-		System.out.println("Among us sussy wussy baka");
-		LOG.info("baka");
+		
 	}
 
 }
