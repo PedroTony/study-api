@@ -26,11 +26,11 @@ public class PessoaController {
 	}
 	@PostMapping
 	public Pessoa create(Pessoa pessoa) {
-		return pessoaService.save(pessoa);
+		return pessoaService.create(pessoa);
 	}
 	@PutMapping
 	public Pessoa update(Pessoa pessoa) {
-		return null;
+		return pessoaService.update(pessoa);
 	}
 	@DeleteMapping
 	public void delete(Pessoa pessoa) {

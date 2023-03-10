@@ -18,7 +18,11 @@ public class PessoaService {
 		return pessoaRepository.findAll();
 	}
 	
-	public Pessoa save(Pessoa pessoa) {
+	public Pessoa create(Pessoa pessoa) {
+		return pessoaRepository.save(pessoa);
+	}
+	
+	public Pessoa update(Pessoa pessoa) {
 		return pessoaRepository.save(pessoa);
 	}
 	
