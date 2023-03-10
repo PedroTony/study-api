@@ -1,41 +1,25 @@
 package com.github.pedrotony.study_api.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pedrotony.study_api.model.Pessoa;
+import com.github.pedrotony.study_api.repository.PessoaRepository;
 
 @Service
 public class PessoaService {
-	private List<Pessoa> pessoas;
 	
-	public PessoaService() {
-		load();
-	}
-
-	private void load() {
-		pessoas = new ArrayList<>();
-		Pessoa pessoa = new Pessoa();
-		pessoa.setId(1L);
-		pessoa.setNome("Pedro");
-		pessoas.add(pessoa);
-		
-		pessoa = new Pessoa();
-		pessoa.setId(2L);
-		pessoa.setNome("Henrique");
-		pessoas.add(pessoa);
-		
-		pessoa = new Pessoa();
-		pessoa.setId(3L);
-		pessoa.setNome("Tony");
-		pessoas.add(pessoa);
-		
-	}
+	@Autowired
+	private PessoaRepository pessoaRepository;
 	
 	public List<Pessoa> getList(){
-		return pessoas;
+		return pessoaRepository.findAll();
+	}
+	
+	public Pessoa save(Pessoa pessoa) {
+		return pessoaRepository.save(pessoa);
 	}
 	
 }
