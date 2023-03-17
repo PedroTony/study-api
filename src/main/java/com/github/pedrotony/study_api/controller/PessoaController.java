@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pedrotony.study_api.model.Pessoa;
+import com.github.pedrotony.study_api.repository.PessoaRepository;
 import com.github.pedrotony.study_api.service.PessoaService;
 
 @RestController
@@ -20,6 +21,9 @@ public class PessoaController {
 	
 	@Autowired
 	private PessoaService pessoaService;
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
 	
 	@GetMapping
 	public List<SearchedPessoa> listAll() {
@@ -50,6 +54,7 @@ public class PessoaController {
 	
 	@DeleteMapping(value = "{id}")
 	public void delete(@PathVariable long id) {
+		pessoaRepository.deleteById(id);
 	}
 	
 }
