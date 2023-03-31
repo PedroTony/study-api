@@ -10,20 +10,15 @@ import com.github.pedrotony.study_api.repository.PessoaRepository;
 
 @Service
 public class PessoaService {
-	
+
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
-	public List<Pessoa> getList(){
+
+	public List<Pessoa> list() {
 		return pessoaRepository.findAll();
 	}
 	
-	public Pessoa create(Pessoa pessoa) {
+	public Pessoa save(Pessoa pessoa) {			
 		return pessoaRepository.save(pessoa);
 	}
-	
-	public Pessoa update(Pessoa pessoa) {
-		return pessoaRepository.save(pessoa);
-	}
-	
 }

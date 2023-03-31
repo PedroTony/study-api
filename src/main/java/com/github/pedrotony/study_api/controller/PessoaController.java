@@ -18,43 +18,60 @@ import com.github.pedrotony.study_api.service.PessoaService;
 @RestController
 @RequestMapping("/pessoas")
 public class PessoaController {
-	
+
 	@Autowired
 	private PessoaService pessoaService;
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
+
 	@GetMapping
 	public List<SearchedPessoa> listAll() {
 		List<SearchedPessoa> result = null;
-		
+		// pessoaService.list();		
 		return result;
 	}
-	@PostMapping
+
+	@PostMapping	
 	public Pessoa create(PessoaCreated dto) {
-		//De para mapeamento entre o dpo e o model
-		//de para mapeamento entre pessoaCreate e Pessoa
+		// DE PARAmapeamento entre dto e o model
+		// DEPARA mapeamento entre PessoaCreated e Pessoa
+		
 		Pessoa pessoa = new Pessoa();
-		//mapeamento
-		pessoa.setNome(dto.getNome());;
+		
+		// mapeamento
 		pessoa.setIdade(dto.getIdade());
-		return pessoaService.create(pessoa);
+		pessoa.setNome(dto.getNome());		
+		
+		Pessoa result = pessoaService.save(pessoa);
+		return result;
 	}
+
 	@PutMapping
-	public Pessoa update(PessoaUpdated dto) {	
-		//verificar se o id já existe
+	public Pessoa update(PessoaUpdated dto) {
+		// verificar se o id informado já existe
+		
+		boolean exists =
+				pessoaRepository.existsById(dto.getId());
+		
+		if (!exists) {
+			throw new RuntimeException("Id não encontrado " 
+							+ dto.getId());			
+		}
 		Pessoa pessoa = new Pessoa();
-		//mapeamento
+		// mapeamento
 		pessoa.setId(dto.getId());
-		pessoa.setNome(dto.getNome());;
 		pessoa.setIdade(dto.getIdade());
-		return pessoaService.update(pessoa);
+		pessoa.setNome(dto.getNome());		
+
+		Pessoa result = pessoaService.save(pessoa);
+		return result;
 	}
-	
+
 	@DeleteMapping(value = "{id}")
-	public void delete(@PathVariable long id) {
-		pessoaRepository.deleteById(id);
+	public void delete(@PathVariable Long id) {
+		pessoaRepository.deleteById(id);		
 	}
-	
+
 }
+

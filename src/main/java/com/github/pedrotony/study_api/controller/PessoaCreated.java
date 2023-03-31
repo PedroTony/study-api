@@ -3,7 +3,7 @@ package com.github.pedrotony.study_api.controller;
 public class PessoaCreated {
 	private String nome;
 	private int idade;
-
+	
 	public String getNome() {
 		return nome;
 	}
