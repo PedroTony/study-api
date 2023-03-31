@@ -1,6 +1,7 @@
 package com.github.pedrotony.study_api.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,8 +28,7 @@ public class PessoaController {
 
 	@GetMapping
 	public List<SearchedPessoa> listAll() {
-		List<SearchedPessoa> result = null;
-		// pessoaService.list();		
+		List<SearchedPessoa> result = pessoaService.list().stream().map(SearchedPessoa::toDto).collect(Collectors.toList());	
 		return result;
 	}
 

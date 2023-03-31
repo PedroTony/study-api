@@ -1,5 +1,7 @@
 package com.github.pedrotony.study_api.controller;
 
+import com.github.pedrotony.study_api.model.Pessoa;
+
 public class SearchedPessoa {
 	private long id;
 	private String nome;
@@ -15,5 +17,11 @@ public class SearchedPessoa {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public static SearchedPessoa toDto(Pessoa pessoa) {
+		SearchedPessoa dto = new SearchedPessoa();
+		dto.setId(pessoa.getId());
+		dto.setNome(pessoa.getNome());
+		return dto;
 	}
 }
