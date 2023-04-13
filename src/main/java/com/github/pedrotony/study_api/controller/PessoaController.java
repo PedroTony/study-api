@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +34,7 @@ public class PessoaController {
 	}
 
 	@PostMapping	
-	public Pessoa create(PessoaCreated dto) {
+	public Pessoa create(@RequestBody PessoaRequestCreate dto) {
 		// DE PARAmapeamento entre dto e o model
 		// DEPARA mapeamento entre PessoaCreated e Pessoa
 		
@@ -48,7 +49,7 @@ public class PessoaController {
 	}
 
 	@PutMapping
-	public Pessoa update(PessoaUpdated dto) {
+	public Pessoa update(@RequestBody PessoaRequestUpdate dto) {
 		// verificar se o id informado já existe
 		
 		boolean exists =
