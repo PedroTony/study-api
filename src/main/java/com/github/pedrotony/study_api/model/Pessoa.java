@@ -14,7 +14,7 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "nome_completo")
+	@Column(name = "nome_completo", nullable = false)
 	private String nome;
 
 	private int idade;
